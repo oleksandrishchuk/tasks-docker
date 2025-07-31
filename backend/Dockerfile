@@ -7,6 +7,8 @@ FROM python:3.9
 # The directory name can be anything.
 WORKDIR /app
 
+RUN pip install gunicorn==20.1.0
+
 # Further instructions will be executed in the /app directory.
 # Copy the dependency file from the local computer
 # to the current directory (the current directory is /app).
@@ -22,4 +24,4 @@ RUN pip install -r requirements.txt --no-cache-dir
 COPY . .
 
 # When the container starts, run the development server.
-CMD ["python", "manage.py", "runserver", "0:8000"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "backend.wsgi"]

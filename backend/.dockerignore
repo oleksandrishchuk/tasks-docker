@@ -1,4 +1,4 @@
-# .dockerignore
+# backend/.dockerignore
 venv
 .git
 db.sqlite3
